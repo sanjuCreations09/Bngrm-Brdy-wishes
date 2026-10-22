@@ -1,12 +1,11 @@
-# Our memories
+# Birthday Wishes Website
 
-The birthday page uses these personal photos and video in the story timeline and memories gallery:
+A birthday celebration with a date gate, interactive stages, photos, a letter reveal, confetti, background music, a virtual hug video, gifts, and a cinematic ending.
 
-- `Snapchat-1286250603.jpg`
-- `Snapchat-471866539.jpg`
-- `Snapchat-618683686.jpg`
-- `Snapchat-819046273.jpg`
-- `Snapchat-958309122.jpg`
-- `Snapchat-1562052584.mp4`
+## Live site
 
-Photos keep their full portrait framing in the gallery. The video starts muted automatically when its gallery page opens; playback controls are available to pause, unmute, or replay it.
+https://sanjuCreations09.github.io/Bngrm-Brdy-wishes/
+
+## GitHub Pages
+
+The repository is published from the `main` branch at the repository root. The images, videos, and music are stored beside `index.html`. Background music loops after the browser permits playback; autoplay restrictions may require the visitor to interact with the page first.

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <title>Happy Birthday to My Favorite Person! 🎂</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
     <style>
         :root {
@@ -49,6 +49,51 @@
         }
 
         [hidden] { display: none !important; }
+
+        .cinematic-intro {
+            position: fixed;
+            z-index: 20;
+            inset: 0;
+            display: flex;
+            min-height: 100vh;
+            min-height: 100svh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 42px 20px 28px;
+            isolation: isolate;
+            background:
+                radial-gradient(ellipse at 50% 48%, rgba(112, 54, 137, .24), transparent 48%),
+                radial-gradient(ellipse at 10% 90%, rgba(151, 57, 110, .13), transparent 45%),
+                linear-gradient(180deg, #090713, #171024 55%, #090713);
+            color: #fff;
+            text-align: center;
+        }
+
+        .cinematic-stars { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+        .cinematic-photo { position: absolute; z-index: -1; right: clamp(12px, 5vw, 72px); bottom: 0; width: auto; height: min(82svh, 760px); max-width: 36vw; object-fit: contain; object-position: bottom right; opacity: .45; filter: brightness(.78) saturate(.9); mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 82%, transparent 100%); pointer-events: none; }
+        .cinematic-intro > :not(.cinematic-photo):not(.cinematic-stars) { position: relative; z-index: 1; }
+        .cinematic-date { color: #f7d895; font-family: 'Cinzel', serif; font-size: clamp(1rem, 3.5vw, 1.5rem); letter-spacing: 5px; text-shadow: 0 0 20px rgba(247,216,149,.27); opacity: 0; animation: cinematic-reveal 1.4s ease .5s forwards; }
+        .cinematic-date::before, .cinematic-date::after { margin: 0 12px; color: #e7bafc; content: "✦"; font-size: .8em; vertical-align: middle; }
+        .cinematic-center { position: relative; width: 100%; max-width: 850px; padding: 24px 0; }
+        .cinematic-halo { position: absolute; top: 50%; left: 50%; width: min(70vw, 340px); aspect-ratio: 1; border: 1px solid rgba(242,213,255,.07); border-radius: 50%; background: radial-gradient(circle, rgba(187,126,229,.13), rgba(177,123,226,.04) 45%, transparent 70%); box-shadow: 0 0 100px rgba(166,91,203,.05); transform: translate(-50%, -50%); animation: cinematic-halo-pulse 5s ease-in-out infinite; pointer-events: none; }
+        .cinematic-eyebrow { position: relative; margin: 0 0 20px; color: #cbb6dc; font-size: .75rem; letter-spacing: 6px; text-transform: uppercase; opacity: 0; animation: cinematic-reveal 1.2s ease 1.5s forwards; }
+        .cinematic-title { position: relative; display: flex; flex-direction: column; gap: 8px; margin: 0; font-family: 'Cinzel', serif; font-weight: 500; line-height: 1.35; }
+        .cinematic-title span { display: block; filter: blur(8px); opacity: 0; transform: translateY(22px); animation: cinematic-title-reveal 1.5s cubic-bezier(.2,.7,.2,1) forwards; }
+        .cinematic-title span:nth-child(1) { color: #fce8ff; font-size: clamp(1.3rem, 4vw, 2.1rem); letter-spacing: 8px; animation-delay: 2.1s; }
+        .cinematic-title span:nth-child(2) { color: #ffd5ec; font-size: clamp(1.7rem, 6vw, 3.6rem); letter-spacing: 2px; text-shadow: 0 0 35px rgba(247,196,231,.17); animation-delay: 2.9s; }
+        .cinematic-title span:nth-child(3) { color: #f7d895; font-size: clamp(2rem, 7vw, 4.1rem); letter-spacing: 6px; text-shadow: 0 0 40px rgba(247,216,149,.15); animation-delay: 3.7s; }
+        .cinematic-subtitle { position: relative; margin: 22px 0 0; color: #c7b4d5; font-size: .8rem; letter-spacing: 2px; opacity: 0; animation: cinematic-reveal 1.3s ease 4.5s forwards; }
+        .cinematic-divider { width: 100px; height: 1px; margin: 24px auto 0; background: linear-gradient(90deg, transparent, #f7d895, transparent); transform: scaleX(0); animation: cinematic-expand 1.2s ease 4.4s forwards; }
+        .cinematic-surprise { width: 100%; max-width: 500px; opacity: 0; transform: translateY(20px); animation: cinematic-bottom-reveal 1.5s ease 5s forwards; }
+        .cinematic-surprise h2 { margin: 0; color: #fff2fa; font-family: 'Cinzel', serif; font-size: clamp(1rem, 3vw, 1.45rem); font-weight: 500; letter-spacing: 2px; line-height: 1.8; }
+        .cinematic-from { margin: 10px 0 0; color: #ffd5ec; font-size: .95rem; letter-spacing: 1px; }
+        .cinematic-signature { display: inline-block; margin-top: 4px; color: #f7d895; font-family: 'Cinzel', serif; font-size: clamp(1.05rem, 3vw, 1.5rem); font-weight: 600; text-shadow: 0 0 20px rgba(247,216,149,.15); }
+        .cinematic-open { display: inline-flex; min-width: 230px; min-height: 48px; align-items: center; justify-content: center; gap: 12px; margin-top: 22px; padding: 12px 24px; border: 1px solid rgba(231,199,238,.55); border-radius: 2px; background: linear-gradient(110deg, #75457b, #49315f); box-shadow: 0 0 25px rgba(167,106,195,.11); color: #fff4ff; cursor: pointer; font: 500 .7rem 'Poppins', sans-serif; letter-spacing: 2px; transition: transform .3s ease, box-shadow .3s ease, background .3s ease; }
+        .cinematic-open:hover { transform: translateY(-3px); background: linear-gradient(110deg, #8d568d, #5a3b73); box-shadow: 0 0 35px rgba(211,163,237,.21); }
+        .cinematic-open:focus-visible { outline: 2px solid #f7d895; outline-offset: 5px; }
+        .cinematic-footer { margin: 22px 0 0; color: #82748e; font-size: .65rem; letter-spacing: 3px; opacity: 0; animation: cinematic-reveal 1s ease 6s forwards; }
 
         .gate-card {
             width: min(100%, 440px);
@@ -419,6 +464,12 @@
             to { opacity: 1; }
         }
 
+        @keyframes cinematic-reveal { to { opacity: 1; } }
+        @keyframes cinematic-title-reveal { to { filter: blur(0); opacity: 1; transform: translateY(0); } }
+        @keyframes cinematic-bottom-reveal { to { opacity: 1; transform: translateY(0); } }
+        @keyframes cinematic-halo-pulse { 0%, 100% { opacity: .45; scale: .96; } 50% { opacity: 1; scale: 1.04; } }
+        @keyframes cinematic-expand { to { transform: scaleX(1); } }
+
         @media (max-width: 480px) {
             body { padding: 16px 10px; }
             .main-card { padding: 24px 15px; }
@@ -428,6 +479,15 @@
             .photo-grid.cutiepie-grid { gap: 12px; }
             .cutiepie-caption { font-size: 1.15rem; }
             .ending-stage { padding: 20px; }
+            .cinematic-intro { padding: 32px 18px 20px; }
+            .cinematic-date { letter-spacing: 2px; }
+            .cinematic-date::before, .cinematic-date::after { margin: 0 5px; }
+            .cinematic-title span:nth-child(1), .cinematic-title span:nth-child(3) { letter-spacing: 4px; }
+            .cinematic-eyebrow { letter-spacing: 4px; }
+        }
+
+        @media (max-width: 700px) {
+            .cinematic-photo { inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center 58%; opacity: .2; filter: brightness(.7) saturate(.85); mask-image: none; }
         }
 
         @media (max-height: 600px) {
@@ -443,11 +503,39 @@
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+            .cinematic-date, .cinematic-eyebrow, .cinematic-title span, .cinematic-subtitle, .cinematic-surprise, .cinematic-footer { animation-delay: 0ms !important; filter: none; opacity: 1; transform: none; }
+            .cinematic-divider { animation-delay: 0ms !important; transform: scaleX(1); }
         }
     </style>
 </head>
 <body>
-    <main class="main-card">
+    <section class="cinematic-intro" id="cinematic-intro" aria-labelledby="cinematic-title">
+        <canvas class="cinematic-stars" id="cinematic-stars" aria-hidden="true"></canvas>
+        <img class="cinematic-photo" src="ending-photo.png" alt="" aria-hidden="true">
+        <header class="cinematic-date">IT'S OCT 28…</header>
+        <div class="cinematic-center">
+            <div class="cinematic-halo" aria-hidden="true"></div>
+            <p class="cinematic-eyebrow">A day made just for you</p>
+            <h1 class="cinematic-title" id="cinematic-title">
+                <span>IT'S MY</span>
+                <span>PRINCESS'S 👑</span>
+                <span>BIRTHDAY ✨</span>
+            </h1>
+            <p class="cinematic-subtitle">A little magic. A thousand memories.</p>
+            <div class="cinematic-divider" aria-hidden="true"></div>
+        </div>
+        <div class="cinematic-surprise">
+            <h2>A LITTLE SURPRISE FOR YOU 🎁</h2>
+            <p class="cinematic-from">from your</p>
+            <p class="cinematic-signature">USELESS KOTHI 🐒❤️</p>
+            <button class="cinematic-open" id="enter-birthday" type="button">
+                OPEN YOUR SURPRISE <span aria-hidden="true">→</span>
+            </button>
+            <p class="cinematic-footer">MADE WITH ♡ JUST FOR YOU</p>
+        </div>
+    </section>
+
+    <main class="main-card" id="birthday-page" hidden>
         <section class="gate-card" id="birthday-gate" aria-labelledby="gate-title">
             <div class="gate-icon" aria-hidden="true">🎁🔐</div>
             <h1 class="gate-title" id="gate-title">A little birthday surprise...</h1>
@@ -525,22 +613,22 @@
                 <div class="photo-grid cutiepie-grid">
                     <figure class="photo-frame cutiepie-card">
                         <span class="cutiepie-heart" aria-hidden="true">💗</span>
-                        <img class="photo-item cutiepie-photo" src="cutiepie-1.jpg" alt="Pic 1, my lovely cutiepie in a peach and blue outfit" loading="lazy">
+                        <img class="photo-item cutiepie-photo" src="memories/cutiepie-1.jpg" alt="Pic 1, my lovely cutiepie in a peach and blue outfit" loading="lazy">
                         <figcaption class="photo-caption cutiepie-caption">my MESSY 💕</figcaption>
                     </figure>
                     <figure class="photo-frame cutiepie-card">
                         <span class="cutiepie-heart" aria-hidden="true">💖</span>
-                        <img class="photo-item cutiepie-photo" src="cutiepie-2.jpg" alt="Pic 2, my lovely cutiepie in a blue outfit" loading="lazy">
+                        <img class="photo-item cutiepie-photo" src="memories/cutiepie-2.jpg" alt="Pic 2, my lovely cutiepie in a blue outfit" loading="lazy">
                         <figcaption class="photo-caption cutiepie-caption">my BNGRM 🤗</figcaption>
                     </figure>
                     <figure class="photo-frame cutiepie-card">
                         <span class="cutiepie-heart" aria-hidden="true">💝</span>
-                        <img class="photo-item cutiepie-photo" src="cutiepie-3.jpg" alt="Pic 3, my lovely cutiepie among pink flowers" loading="lazy">
+                        <img class="photo-item cutiepie-photo" src="memories/cutiepie-3.jpg" alt="Pic 3, my lovely cutiepie among pink flowers" loading="lazy">
                         <figcaption class="photo-caption cutiepie-caption">my MUMMA 🎀</figcaption>
                     </figure>
                     <figure class="photo-frame cutiepie-card">
                         <span class="cutiepie-heart" aria-hidden="true">💗</span>
-                        <img class="photo-item cutiepie-photo" src="cutiepie-4.jpg" alt="Pic 4, a smiling portrait of my lovely cutiepie" loading="lazy">
+                        <img class="photo-item cutiepie-photo" src="memories/cutiepie-4.jpg" alt="Pic 4, a smiling portrait of my lovely cutiepie" loading="lazy">
                         <figcaption class="photo-caption cutiepie-caption">my LOVLY HEADACHE 💞</figcaption>
                     </figure>
                 </div>
@@ -556,15 +644,15 @@
                     <p>One more wish: May this year bring you sweet surprises, big smiles, and plenty of reasons to stay close to your favorite person (me, obviously 🤭💕).</p>
                 </div>
                 <div class="photo-grid">
-                    <figure class="photo-frame"><img src="Snapchat-1286250603.jpg" alt="A photo with friends at a celebration" class="photo-item" loading="lazy"><figcaption class="photo-caption">A day to remember ✨</figcaption></figure>
-                    <figure class="photo-frame"><img src="Snapchat-471866539.jpg" alt="A handwritten keepsake" class="photo-item" loading="lazy"><figcaption class="photo-caption">A little keepsake 💗</figcaption></figure>
-                    <figure class="photo-frame"><img src="Snapchat-618683686.jpg" alt="A happy photo with friends" class="photo-item" loading="lazy"><figcaption class="photo-caption">Our favorite people 🫶</figcaption></figure>
-                    <figure class="photo-frame"><img src="Snapchat-819046273.jpg" alt="A handwritten memory" class="photo-item" loading="lazy"><figcaption class="photo-caption">A doodle to remember ✍️</figcaption></figure>
-                    <figure class="photo-frame"><img src="Snapchat-958309122.jpg" alt="A handwritten keepsake" class="photo-item" loading="lazy"><figcaption class="photo-caption">Sweet little memories 💕</figcaption></figure>
+                    <figure class="photo-frame"><img src="memories/Snapchat-1286250603.jpg" alt="A photo with friends at a celebration" class="photo-item" loading="lazy"><figcaption class="photo-caption">A day to remember ✨</figcaption></figure>
+                    <figure class="photo-frame"><img src="memories/Snapchat-471866539.jpg" alt="A handwritten keepsake" class="photo-item" loading="lazy"><figcaption class="photo-caption">A little keepsake 💗</figcaption></figure>
+                    <figure class="photo-frame"><img src="memories/Snapchat-618683686.jpg" alt="A happy photo with friends" class="photo-item" loading="lazy"><figcaption class="photo-caption">Our favorite people 🫶</figcaption></figure>
+                    <figure class="photo-frame"><img src="memories/Snapchat-819046273.jpg" alt="A handwritten memory" class="photo-item" loading="lazy"><figcaption class="photo-caption">A doodle to remember ✍️</figcaption></figure>
+                    <figure class="photo-frame"><img src="memories/Snapchat-958309122.jpg" alt="A handwritten keepsake" class="photo-item" loading="lazy"><figcaption class="photo-caption">Sweet little memories 💕</figcaption></figure>
                     <figure class="photo-frame">
-                        <video class="memory-video" controls autoplay loop muted playsinline preload="metadata" poster="Snapchat-618683686.jpg" aria-label="A video from our memories">
-                            <source src="Snapchat-1562052584.mp4" type="video/mp4">
-                            Your browser can't play this video. <a href="Snapchat-1562052584.mp4">Open the video directly</a>.
+                        <video class="memory-video" controls autoplay loop muted playsinline preload="metadata" poster="memories/Snapchat-618683686.jpg" aria-label="A video from our memories">
+                            <source src="memories/Snapchat-1562052584.mp4" type="video/mp4">
+                            Your browser can't play this video. <a href="memories/Snapchat-1562052584.mp4">Open the video directly</a>.
                         </video>
                         <figcaption class="photo-caption">A little moment together 🎬</figcaption>
                     </figure>
@@ -625,31 +713,31 @@
                 <p class="photo-note">Choose a gift to open our WhatsApp chat and download its picture 💌</p>
                 <div class="gift-grid">
                     <article class="gift-card">
-                        <img class="gift-photo" src="gift-1.jpg" alt="Gift 1">
+                        <img class="gift-photo" src="gifts/gift-1.jpg" alt="Gift 1">
                         <div class="gift-card-content">
                             <h3 class="gift-name">Gift 1 🎁</h3>
-                            <button class="celebrate-btn choose-gift" type="button" data-gift="Gift 1" data-image="gift-1.jpg">Choose This Gift 💚</button>
+                            <button class="celebrate-btn choose-gift" type="button" data-gift="Gift 1" data-image="gifts/gift-1.jpg">Choose This Gift 💚</button>
                         </div>
                     </article>
                     <article class="gift-card">
-                        <img class="gift-photo" src="gift-2.jpg" alt="Gift 2">
+                        <img class="gift-photo" src="gifts/gift-2.jpg" alt="Gift 2">
                         <div class="gift-card-content">
                             <h3 class="gift-name">Gift 2 🎁</h3>
-                            <button class="celebrate-btn choose-gift" type="button" data-gift="Gift 2" data-image="gift-2.jpg">Choose This Gift 💚</button>
+                            <button class="celebrate-btn choose-gift" type="button" data-gift="Gift 2" data-image="gifts/gift-2.jpg">Choose This Gift 💚</button>
                         </div>
                     </article>
                     <article class="gift-card">
-                        <img class="gift-photo" src="gift-3.png" alt="Gift 3">
+                        <img class="gift-photo" src="gifts/gift-3.png" alt="Gift 3">
                         <div class="gift-card-content">
                             <h3 class="gift-name">Gift 3 🎁</h3>
-                            <button class="celebrate-btn choose-gift" type="button" data-gift="Gift 3" data-image="gift-3.png">Choose This Gift 💚</button>
+                            <button class="celebrate-btn choose-gift" type="button" data-gift="Gift 3" data-image="gifts/gift-3.png">Choose This Gift 💚</button>
                         </div>
                     </article>
                     <article class="gift-card">
-                        <img class="gift-photo" src="gift-4.jpg" alt="Gift 4">
+                        <img class="gift-photo" src="gifts/gift-4.jpg" alt="Gift 4">
                         <div class="gift-card-content">
                             <h3 class="gift-name">Gift 4 🎁</h3>
-                            <button class="celebrate-btn choose-gift" type="button" data-gift="Gift 4" data-image="gift-4.jpg">Choose This Gift 💚</button>
+                            <button class="celebrate-btn choose-gift" type="button" data-gift="Gift 4" data-image="gifts/gift-4.jpg">Choose This Gift 💚</button>
                         </div>
                     </article>
                 </div>
@@ -703,12 +791,106 @@
 
     <script>
         const HER_BIRTHDATE = '2006-10-28';
+        const cinematicIntro = document.getElementById('cinematic-intro');
+        const cinematicStars = document.getElementById('cinematic-stars');
+        const birthdayPage = document.getElementById('birthday-page');
+        const enterBirthdayButton = document.getElementById('enter-birthday');
         const birthdayForm = document.getElementById('birthday-form');
         const birthdayInput = document.getElementById('birthday-input');
         const gateError = document.getElementById('gate-error');
         const gate = document.getElementById('birthday-gate');
         const backgroundMusic = document.getElementById('background-music');
         let musicStartPending = false;
+
+        const starContext = cinematicStars.getContext('2d');
+        const reducedMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let introStars = [];
+        let introAnimationFrame = null;
+        let lastStarFrame = 0;
+
+        function drawIntroStars(time = 0, staticFrame = false) {
+            if (!starContext) return;
+            const { width, height } = cinematicIntro.getBoundingClientRect();
+            starContext.clearRect(0, 0, width, height);
+            introStars.forEach((star) => {
+                const twinkle = staticFrame ? 0.8 : 0.65 + Math.sin(time * 0.001 * star.speed + star.phase) * 0.3;
+                starContext.beginPath();
+                starContext.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                starContext.fillStyle = `rgba(255, 225, 250, ${star.alpha * twinkle})`;
+                starContext.fill();
+            });
+        }
+
+        function resizeIntroStars() {
+            const bounds = cinematicIntro.getBoundingClientRect();
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            cinematicStars.width = Math.round(bounds.width * dpr);
+            cinematicStars.height = Math.round(bounds.height * dpr);
+            starContext?.setTransform(dpr, 0, 0, dpr, 0, 0);
+            const count = Math.min(100, Math.floor((bounds.width * bounds.height) / 10000));
+            introStars = Array.from({ length: count }, () => ({
+                x: Math.random() * bounds.width,
+                y: Math.random() * bounds.height,
+                radius: Math.random() * 1.4 + 0.3,
+                alpha: Math.random() * 0.6 + 0.15,
+                speed: Math.random() * 0.5 + 0.2,
+                phase: Math.random() * Math.PI * 2
+            }));
+            drawIntroStars(0, true);
+        }
+
+        function animateIntroStars(time) {
+            if (cinematicIntro.hidden || document.hidden || reducedMotionPreference.matches) {
+                introAnimationFrame = null;
+                return;
+            }
+            if (time - lastStarFrame > 40) {
+                drawIntroStars(time);
+                lastStarFrame = time;
+            }
+            introAnimationFrame = window.requestAnimationFrame(animateIntroStars);
+        }
+
+        function startIntroStars() {
+            if (introAnimationFrame === null && !cinematicIntro.hidden && !document.hidden && !reducedMotionPreference.matches) {
+                introAnimationFrame = window.requestAnimationFrame(animateIntroStars);
+            }
+        }
+
+        function stopIntroStars() {
+            if (introAnimationFrame !== null) {
+                window.cancelAnimationFrame(introAnimationFrame);
+                introAnimationFrame = null;
+            }
+        }
+
+        function leaveCinematicIntro() {
+            stopIntroStars();
+            window.removeEventListener('resize', resizeIntroStars);
+            cinematicIntro.hidden = true;
+            birthdayPage.hidden = false;
+            birthdayInput.focus({ preventScroll: true });
+        }
+
+        if (starContext) {
+            resizeIntroStars();
+            window.addEventListener('resize', resizeIntroStars);
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    stopIntroStars();
+                } else {
+                    startIntroStars();
+                }
+            });
+            reducedMotionPreference.addEventListener?.('change', () => {
+                stopIntroStars();
+                drawIntroStars(0, true);
+                startIntroStars();
+            });
+            startIntroStars();
+        }
+
+        enterBirthdayButton.addEventListener('click', leaveCinematicIntro);
 
         function startBackgroundMusic() {
             if (!backgroundMusic.paused || musicStartPending) return;
@@ -1109,6 +1291,7 @@
             } else {
                 hugVideo.pause();
             }
+            startBackgroundMusic();
         }
 
         document.getElementById('to-wishes').addEventListener('click', () => showStage(wishesStage));
